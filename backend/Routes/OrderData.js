@@ -7,7 +7,6 @@ router.post('/orderData', async (req, res) => {
     await data.splice(0, 0, { Order_date: req.body.order_date })
 
     let eId = await Order.findOne({ 'email': req.body.email })
-    console.log(eId)
     if (eId === null) {
         try {
             await Order.create({
@@ -41,8 +40,6 @@ router.post('/myOrderData', async (req, res) => {
     } catch (error) {
         res.send("Error", error.message)
     }
-
-
 });
 
 module.exports = router;
